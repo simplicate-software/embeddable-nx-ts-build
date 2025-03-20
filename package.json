@@ -1,0 +1,36 @@
+{
+  "private": true,
+  "name": "@simplicate/simplicate",
+  "workspaces": {
+    "packages": [
+      "apps/*",
+      "libs/*",
+      "libs/features/*"
+    ]
+  },
+  "resolutions": {
+    "react@18.0.0": "18.3.1"
+  },
+  "scripts": {
+    "embeddable:build": "yarn nx run embeddable:build",
+    "embeddable:dev": "yarn nx run embeddable:dev",
+    "embeddable:login": "yarn nx run embeddable:login",
+    "embeddable:push": "yarn nx run embeddable:push",
+    "embeddable": "yarn nx run embeddable:dev"
+  },
+  "repository": {
+    "url": "https://github.com/simplicate-software/embeddable-nx-ts-build"
+  },
+  "devDependencies": {
+    "@nx/js": "^19.8.8",
+    "@nx/plugin": "^19.8.8",
+    "@nx/react": "^19.8.8",
+    "@nx/vite": "^19.8.8",
+    "@swc/core": "~1.7.6",
+    "lerna": "^8.1.8",
+    "nx": "^19.8.8",
+    "typescript": "^5.1.6"
+  },
+  "version": "1.22.4",
+  "packageManager": "yarn@4.7.0"
+}

@@ -1,0 +1,56 @@
+{
+  "name": "charts",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "tags": ["type:ui"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "cache": true,
+      "options": {
+        "main": "{projectRoot}/src/index.ts",
+        "outputPath": "{projectRoot}/dist",
+        "tsConfig": "{projectRoot}/tsconfig.json"
+      }
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "cache": true,
+      "options": {
+        "command": "yarn typecheck",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "test": {
+      "inputs": ["default", "^default", "{workspaceRoot}/jest.preset.js"],
+      "outputs": ["{projectRoot}/coverage"],
+      "executor": "@nx/jest:jest",
+      "cache": true,
+      "options": {
+        "cwd": "{projectRoot}",
+        "jestConfig": "{projectRoot}/jest.config.ts",
+        "codeCoverage": true,
+        "coverageReporters": ["text", "text-summary", "html"]
+      },
+      "configurations": {
+        "coverage": {
+          "randomize": true,
+          "runInBand": true,
+          "json": true,
+          "outputFile": "./coverage/projects/{projectName}.json"
+        },
+        "watch": {
+          "watch": true
+        }
+      }
+    },
+    "coverage-report": {},
+    "stylelint": {
+      "executor": "nx-stylelint:lint",
+      "outputs": ["{options.outputFile}"],
+      "cache": true,
+      "options": {
+        "lintFilePatterns": ["{projectRoot}/**/*.scss"]
+      }
+    }
+  }
+}

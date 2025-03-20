@@ -1,0 +1,16 @@
+{
+  "name": "insights",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "tags": ["type:feature"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "cache": true,
+      "options": {
+        "main": "{projectRoot}/src/index.ts",
+        "outputPath": "{projectRoot}/dist",
+        "tsConfig": "{projectRoot}/tsconfig.json"
+      }
+    }
+  }
+}

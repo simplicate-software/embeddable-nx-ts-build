@@ -1,0 +1,43 @@
+{
+  "name": "@simplicate/embeddable",
+  "version": "0.0.0",
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx,json,md,mdx}": [
+      "eslint --fix"
+    ],
+    "*.{css,scss}": [
+      "stylelint --fix"
+    ]
+  },
+  "type": "module",
+  "scripts": {
+    "cube:cubestore": "mysql -h 127.0.0.1 -P 13306 --user=cubestore -pcubestore",
+    "cube:playground": "docker-compose -f ./src/cube-playground.yml up",
+    "dev": "npx embeddable dev",
+    "lint": "eslint src/**/*.{js,jsx,ts,tsx}",
+    "login": "embeddable login",
+    "push": "embeddable push",
+    "test:watch": "jest --watchAll",
+    "test": "jest",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@simplicate/insights": "workspace:*",
+    "react": "18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@embeddable.com/core": "^2.9.2",
+    "@embeddable.com/react": "^2.9.5",
+    "@embeddable.com/sdk-core": "^3.13.2",
+    "@embeddable.com/sdk-react": "^3.10.9",
+    "@types/react": "^18.2.16",
+    "@vitejs/plugin-react": "^4.3.1",
+    "typescript": "^5.1.6",
+    "vite": "^5.3.6",
+    "vite-plugin-dts": "^4.5.3",
+    "vite-tsconfig-paths": "^5.1.4"
+  },
+  "pre-commit": "lint",
+  "license": "MIT"
+}

@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "rootDir": ".",
+    "paths": {
+      "@simplicate/charts": ["libs/charts/src"],
+      "@simplicate/insights": ["libs/features/insights/src"],
+    }
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}

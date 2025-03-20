@@ -1,0 +1,30 @@
+{
+  "name": "embeddable",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "tags": [
+    "type:app"
+  ],
+  "targets": {
+    "prepare": {
+      "executor": "@nx/vite:build",
+      "cache": true,
+      "dependsOn": ["^build"],
+      "options": {
+        "outputPath": "{projectRoot}/dist",
+        "config": "{projectRoot}/vite.config.ts",
+        "tsConfig": "{projectRoot}/tsconfig.bundle.json",
+        "buildLibsFromSource": false
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["prepare"],
+      "options": {
+        "commands": [
+          "embeddable build --force"
+        ],
+        "cwd": "{projectRoot}"
+      }
+    }
+  }
+}
